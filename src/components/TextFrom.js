@@ -3,6 +3,13 @@ import React, {useState}  from 'react'
 export default function TextFrom(props) {
     const [text, textCount ] = useState('');
 
+    const speakMale = () => {
+      let msg = new SpeechSynthesisUtterance();
+      msg.text = text;
+      window.speechSynthesis.speak(msg);
+    }
+
+
     const handleOnClick = () => {
        const thenewtext = text.toUpperCase();
        textCount(thenewtext);
@@ -20,16 +27,19 @@ export default function TextFrom(props) {
   return (
     <> <div>
         <h1>{props.heading}</h1>
-    <div className="mb-3">
+    <div className="mb-2">
               <textarea className="form-control" value={text} onChange={handleOnChange} id="MyBox" rows="8"></textarea>
           </div>
           </div>
           <div className="row">
   <div className="col">
-    <button className="btn btn-primary mx-2" onClick={handleOnClick}>Convert Your Text</button>
+    <button className="btn btn-primary mx-2" onClick={handleOnClick}>Convert Your Text Into Upeer Case</button>
   </div>
   <div className="col">
-    <button className="btn btn-primary " onClick={handleOnClickLower}>Convert Your Text</button>
+    <button className="btn btn-primary " onClick={handleOnClickLower}>Convert Your Text to Lower Case</button>
+  </div>
+  <div className="col">
+    <button className="btn btn-primary mx-1" onClick={speakMale}>Speak Male Voice</button>
   </div>
 </div>
 <div className="container my-3">
