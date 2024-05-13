@@ -2,6 +2,17 @@ import React, {useState}  from 'react'
 
 export default function TextFrom(props) {
     const [text, textCount ] = useState('');
+    
+     const validateJson = () => {
+      const json = text;
+      try{
+        JSON.parse(json);
+        alert('JSON is valid');
+      }
+      catch(error){
+        alert('Invalid JSON' + error.message);
+      }
+     }
 
     const speakMale = () => {
       let msg = new SpeechSynthesisUtterance();
@@ -40,6 +51,9 @@ export default function TextFrom(props) {
   </div>
   <div className="col">
     <button className="btn btn-primary mx-1" onClick={speakMale}>Speak Male Voice</button>
+  </div>
+  <div className="col">
+    <button className="btn btn-primary mx-1" onClick={validateJson}>Validate Json</button>
   </div>
 </div>
 <div className="container my-3">
