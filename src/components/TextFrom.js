@@ -36,34 +36,25 @@ export default function TextFrom(props) {
        textCount(event.target.value);
     }
   return (
-    <> <div>
+    <>
+      <div className='container' style={{color: props.mode === 'dark'?'white':'#042743'}}>
         <h1>{props.heading}</h1>
-    <div className="mb-2">
-              <textarea className="form-control" value={text} onChange={handleOnChange} id="MyBox" rows="8"></textarea>
-          </div>
-          </div>
-          <div className="row">
-  <div className="col">
-    <button className="btn btn-primary mx-2" onClick={handleOnClick}>Convert Your Text Into Upeer Case</button>
-  </div>
-  <div className="col">
+        <div className="mb-3">
+        <textarea className="form-control" value={text} style={{backgroundColor: props.mode === 'dark'?'grey':'white', color: props.mode === 'dark'?'white':'#042743'}}  onChange={handleOnChange} id="MyBox" rows="8"></textarea>
+        </div>
+    <button className="btn btn-primary mx-2" onClick={handleOnClick}>Convert Your Text Into Upper Case</button>
     <button className="btn btn-primary " onClick={handleOnClickLower}>Convert Your Text to Lower Case</button>
-  </div>
-  <div className="col">
-    <button className="btn btn-primary mx-1" onClick={speakMale}>Speak Male Voice</button>
-  </div>
-  <div className="col">
+    <button className="btn btn-primary mx-1" onClick={speakMale}>Speak</button>
     <button className="btn btn-primary mx-1" onClick={validateJson}>Validate Json</button>
-  </div>
-</div>
-<div className="container my-3">
+    </div>
+<div className="container my-3" style={{color:  props.mode === 'dark'?'white':'#042743'}}>
   <h3>You Text Summary</h3>
   <p>The number of characters in your text {text.length} and number of words are {text.split(" ").length}</p>
   <p>Time for the user to study the wordsis in  {0.008 * text.split(" ").length} minutes</p>
   <h2>
     Preview
   </h2>
-  <p>{text}</p>
+  <p>{text.length>0?text:"Enter some text in the text box to preview it here" }</p>
 </div>
     </>
   )
